@@ -1,0 +1,11 @@
+#!/bin/sh
+
+export LANG=C
+
+logger hoge all $1 $2
+
+case "$2" in
+        up)
+                tc qdisc add dev $1 root netem delay {{ tc_netem_delay }}
+                ;;
+esac

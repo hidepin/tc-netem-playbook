@@ -1,0 +1,6 @@
+---
+# handlers file for tc-netem
+- name: NetworkManager restart
+  service:
+    name: NetworkManager
+    state: restarted

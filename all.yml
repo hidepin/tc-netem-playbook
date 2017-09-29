@@ -1,0 +1,5 @@
+---
+# file: all.yml
+- hosts: all
+  roles:
+    - { role: tc-netem, when: "ansible_os_family == 'RedHat' and ansible_distribution_major_version == '7'" }

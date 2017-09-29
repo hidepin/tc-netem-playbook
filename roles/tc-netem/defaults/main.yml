@@ -1,0 +1,3 @@
+---
+# defaults file for tc-netem
+tc_netem_delay: "10ms"

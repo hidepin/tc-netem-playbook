@@ -1,0 +1,21 @@
+---
+# tasks file for tc-netem
+- block:
+  - name: tc netem setting
+    template:
+      src: 99-tc-netem.j2
+      dest: /etc/NetworkManager/dispatcher.d/99-tc-netem
+      owner: root
+      group: root
+      mode: 0755
+      backup: yes
+    register: is_tc_netem_setting
+    notify: NetworkManager restart
+
+  always:
+  - name: tc netem backup settings
+    include: backup.yml
+    with_flattened:
+      - "{{ is_tc_netem_setting|default() }}"
+    loop_control:
+      loop_var: backup_item
